@@ -9,7 +9,7 @@ Standalone script to turn Angular template into js and put it in a module.
 Usage
 -----
 ```
-$ ng-html2js inputFile [outputFile] [-m moduleName] [--module-var ngModule]
+$ ng-html2js inputFile [outputFile] [-m moduleName]
 ```
 
 If you specify only inputFile, it will display the result to the console.
@@ -32,15 +32,14 @@ module.run(['$templateCache', function($templateCache) {
 
 If you specify moduleName, the template will belong to that module.
 ```
-$ ng-html2js test/test.tmpl -m foo --module-var ngModule
-var ngModule;
+$ ng-html2js test/test.tmpl -m foo
 try {
-  ngModule = angular.module('foo');
+  angular.module('foo');
 } catch (e) {
-  ngModule = angular.module('foo', []);
+  angular.module('foo', []);
 }
 
-ngModule.run(['$templateCache', function ($templateCache) {
+angular.module('foo').run(['$templateCache', function ($templateCache) {
   $templateCache.put('test/test.tmpl',
     '<div>\n' +
     '  hello world\n' +

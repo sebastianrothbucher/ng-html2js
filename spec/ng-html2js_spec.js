@@ -28,28 +28,6 @@ describe('ng-html2js', function() {
     });
   });
 
-  describe('choosing a module variable', function() {
-    it('can be performed by providing the flag "--module-var <module-variable>"', function() {
-      var returnValue = exec("./bin/ng-html2js spec/test.tmpl --module-var ngModule", {silent: true});
-      var fileContents = cat("spec/testOutputs/expectedTestTmplJsWithModuleVar");
-      expect(returnValue.output).toEqual(fileContents);
-    });
-  });
-
-  describe('choosing a module variable and a module name', function() {
-    it('can be performed by providing the -m and --module-var flags', function() {
-      var returnValue = exec("./bin/ng-html2js spec/test.tmpl -m foo --module-var ngModule", {silent: true});
-      var fileContents = cat("spec/testOutputs/expectedTestTmplJsWithModuleAndModuleVar");
-      expect(returnValue.output).toEqual(fileContents);
-    });
-
-    it('can be performed by providing the --module and --module-var flags', function() {
-      var returnValue = exec("./bin/ng-html2js spec/test.tmpl --module foo --module-var ngModule", {silent: true});
-      var fileContents = cat("spec/testOutputs/expectedTestTmplJsWithModuleAndModuleVar");
-      expect(returnValue.output).toEqual(fileContents);
-    });
-  });
-
   describe('stripping part of the path from the template name using the -b or --basedir flag', function() {
     it('can be performed by providing the flag "-b <subpath>"', function() {
       var returnValue = exec("./bin/ng-html2js `pwd`/spec/test.tmpl -b `pwd`/spec", {silent: true});

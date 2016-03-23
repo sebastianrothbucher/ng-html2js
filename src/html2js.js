@@ -34,20 +34,18 @@ var escapeContent = function(content) {
 // Main script
 //
 
-module.exports = function (fileName, content, moduleName, moduleVar) {
+module.exports = function (fileName, content, moduleName) {
   var escapedContent = escapeContent(content);
 
   var output = null;
-  moduleVar = moduleVar || 'module';
   if (moduleName) {
     output = util.format(SINGLE_MODULE_TMPL,
-        moduleVar,
-        moduleVar, moduleName,
-        moduleVar, moduleName,
-        moduleVar,
+        moduleName,
+        moduleName,
+        moduleName,
         fileName, escapedContent);
   } else {
-    output = util.format(TMPL, moduleVar, fileName, moduleVar, fileName, escapedContent);
+    output = util.format(TMPL, moduleName, fileName, escapedContent);
   }
 
   return output;

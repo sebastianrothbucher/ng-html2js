@@ -1,11 +1,10 @@
-var module;
 try {
-  module = angular.module('foo');
+  angular.module('foo');
 } catch (e) {
-  module = angular.module('foo', []);
+  angular.module('foo', []);
 }
 
-module.run(['$templateCache', function ($templateCache) {
+angular.module('foo').run(['$templateCache', function ($templateCache) {
   $templateCache.put('spec/test.tmpl',
     '<div>\n' +
     '  hello world\n' +

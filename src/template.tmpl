@@ -1,5 +1,4 @@
-var %s = angular.module('%s', []);
-%s.run(['$templateCache', function($templateCache) {
+angular.module('%s', []).run(['$templateCache', function($templateCache) {
   $templateCache.put('%s',
     '%s');
 }]);
